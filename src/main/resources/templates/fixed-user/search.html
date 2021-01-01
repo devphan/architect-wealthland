@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fixed-user/layout::head">
+    <title>Home</title>
+</head>
+
+<body scroll="no">
+<div class="loading-overlay"><img alt="Preloading WealthLand"
+                                  src="https://batdongsan8.trustweb.vn/wp-content/themes/flatsome-child/images/preloader.gif"/>
+</div>
+<header th:replace="fixed-user/layout::header">
+</header>
+<main class="index-page">
+    <div class="carousel-container">
+        <div id="wowslider-container1">
+            <div class="ws_images">
+                <ul>
+                    <li><a href="http://wowslider.net"><img src="libs/wowslider/data/images/sp9_master.jpg" alt=""
+                                                            title=""/></a></li>
+                    <li><a href="http://wowslider.net"><img src="libs/wowslider/data/images/sp8_master.jpg"
+                                                            alt="image carousel" title=""/></a></li>
+                    <li><a href="http://wowslider.net"><img
+                            src="libs/wowslider/data/images/5yeutotaonencohoidaututhongminhtaiflcluxuryhotelsamson2578643.jpg"
+                            title=""
+                            alt="5-yeu-to-tao-nen-co-hoi-dau-tu-thong-minh-tai-flc-luxury-hotel-sam-son-257-8643"/></a>
+                    </li>
+                </ul>
+                <div class="ws_bullets"><a href="#" title=""><span><img class="tooltip__img"
+                                                                        src="libs/wowslider/data/images/sp9_master.jpg"
+                                                                        alt=""/><span>1</span></span></a><a href="#"
+                                                                                                            title="sp8_master"><span><img
+                        class="tooltip__img" src="libs/wowslider/data/tooltips/sp8_master.jpg"
+                        alt="sp8_master"/><span>2</span></span></a><a href="#"
+                                                                      title="5-yeu-to-tao-nen-co-hoi-dau-tu-thong-minh-tai-flc-luxury-hotel-sam-son-257-8643"><span><img
+                        class="tooltip__img"
+                        src="libs/wowslider/data/tooltips/5yeutotaonencohoidaututhongminhtaiflcluxuryhotelsamson2578643.jpg"
+                        alt="5-yeu-to-tao-nen-co-hoi-dau-tu-thong-minh-tai-flc-luxury-hotel-sam-son-257-8643"/><span>3</span></span></a>
+                </div>
+                <div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">slider
+                    jquery</a><span>by WOWSlider.com v9.0m</span></div>
+            </div>
+            <div class="ws_shadow"></div>
+        </div>
+        <div class="carousel-widget app-container">
+            <div class="project-description">
+                <h2 class="feature text-2">BABYLON RESIDENCE</h2><span class="feature-description">458 Minh Khai, Hai Bà Trưng
+            - Hà Nội</span><span class="feature-description">Giá chỉ từ 4 tỷ</span>
+                <button class="btn btn-accent">Xem chi tiết</button>
+            </div>
+            <form>
+                <input type="text" placeholder="Vui lòng nhập họ tên"/>
+                <input type="text" placeholder="Số điện thoại"/>
+                <input type="text" placeholder="Email"/>
+                <textarea placeholder="Viết bình luận" rows="4"></textarea>
+                <button class="btn btn-accent">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="libs/wowslider/engine/style.css"/>
+    <script src="libs/wowslider/engine/wowslider.js"></script>
+    <script src="libs/wowslider/engine/script.js"></script>
+    <section class="search-area app-container">
+        <form class="search-form" action="/search" th:object="${estate}" method="get">
+            <input type="hidden">
+            <div class="combox__wrapper">
+                <div class="control__wrapper">
+                    <label>Price</label>
+                    <select class="control" id="price" name="bathroom" th:field="*{price}">
+                        <option value="1">Dưới 1 tỷ</option>
+                        <option value="2">Từ 1 - 3 tỷ</option>
+                        <option value="3">Từ 3 - 5 tỷ</option>
+                        <option value="4">Trên 5 tỷ</option>
+                    </select>
+                </div>
+                <!--            <div class="control__wrapper">-->
+                <!--                <label>Từ khóa</label>-->
+                <!--                <input class="control" type="text" placeholder="Từ khóa tìm kiếm" name="keyword"/>-->
+                <!--            </div>-->
+                <div class="control__wrapper">
+                    <label>Area</label>
+                    <select class="control" id="area" placeholder="Diện tích">
+                        <option value="1">Dưới 50m2</option>
+                        <option value="2">Từ 50 - 500 m2</option>
+                        <option value="3">Từ 500 - 1 km2</option>
+                        <option value="4">Trên 1 km2</option>
+                    </select>
+                </div>
+                <div class="control__wrapper">
+                    <label>Phòng tắm</label>
+                    <select class="control" placeholder="Số phòng tắm" id="bathroom">
+                        <option value="1">Từ 1 - 1.5 phòng</option>
+                        <option value="2">Từ 2 - 3.5 phòng</option>
+                        <option value="3">Trên 3.5 phòng</option>
+                    </select>
+                </div>
+                <div class="control__wrapper">
+                    <label>Phòng ngủ</label>
+                    <select class="control" placeholder="Số phòng tắm" id="bedroom">
+                        <option value="1">Từ 1 - 1.5 phòng</option>
+                        <option value="2">Từ 2 - 3.5 phòng</option>
+                        <option value="3">Trên 3.5 phòng</option>
+                    </select>
+                </div>
+                <div class="control__wrapper">
+                    <button type="button" onclick="estates.filterEstate()" class="btn btn-accent">TÌM KIẾM</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <section class="gallery-room container">
+        <div class="title-section has-margin">
+            <h2 class="text-3">Kết quả tìm kiếm</h2>
+        </div>
+        <div class="row" style="width: 100%" id="listEstates">
+
+        </div>
+    </section>
+</main>
+<th:block th:if="${estate}">
+    <th:block th:if="${estate.price}">
+        <input type="text" hidden="hidden" id="priceSearch" th:value="${estate.price}">
+    </th:block>
+    <!--    <th:block th:if="${estate.city}">-->
+    <!--        <input type="text" hidden="hidden" id="citySearch" th:value="${estate.city.id}">-->
+    <!--    </th:block>-->
+    <!--    <th:block th:if="${estate.province}">-->
+    <!--        <input type="text" hidden="hidden" id="provinceSearch" th:value="${estate.province.id}">-->
+    <!--    </th:block>-->
+    <th:block th:if="${estate.bathroom}">
+        <input type="text" hidden="hidden" id="bathroomSearch" th:value="${estate.bathroom}">
+    </th:block>
+    <th:block th:if="${estate.bedroom}">
+        <input type="text" hidden="hidden" id="bedroomSearch" th:value="${estate.bedroom}">
+    </th:block>
+    <th:block th:if="${estate.area}">
+        <input type="text" hidden="hidden" id="areaSearch" th:value="${estate.area}">
+    </th:block>
+</th:block>
+<th:block th:replace="fixed-user/layout::js">
+</th:block>
+<footer th:replace="fixed-user/layout::footer"></footer>
+<script src="assets_user/js/all.js"></script>
+<script>
+    estates.search();
+</script>
+</body>
+</html>

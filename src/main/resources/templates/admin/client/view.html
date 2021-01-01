@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="admin/layout::head">
+
+    <!-- Title Page-->
+    <title>Client</title>
+
+</head>
+
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header th:replace="admin/layout::header-mobile"></header>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <aside th:replace="admin/layout::header-slidebar"></aside>
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header th:replace="admin/layout::header-desktop"></header>
+        <!-- END HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="float-right">
+                                <a methods="GET" th:href="@{/web/clients/add}"
+                                   class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                    <i class="zmdi zmdi-plus">ADD NEW clients</i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="table-responsive table--no-card m-b-30">
+                                <table class="table table-borderless table-striped table-earning">
+
+                                    </br>
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Tel</th>
+                                        <th>Email</th>
+                                        <th>Comment</th>
+                                        <th>Status</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="client : ${clients}">
+                                        <td th:text="${client.name}"></td>
+                                        <td th:text="${client.tel}"></td>
+                                        <td th:text="${client.email}"></td>
+                                        <td th:text="${client.description}"></td>
+                                        <td>
+                                            <span th:text="${client.status}" class="badge badge-success"></span>
+                                        </td>
+
+                                        <td>
+                                            <div class="table-data-feature">
+                                                <a th:href="@{/web/clients/edit/__${client.id}__ }" class="item"
+                                                   data-toggle="tooltip" title="Edit">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </a>
+
+                                                <a th:href="@{/web/clients/delete/__${client.id}__}" class="item"
+                                                   data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                        <div class="float-right">
+                            <a th:href="@{'/web/clients/'(page=${clients.number - 1})}" th:if="${clients.hasPrevious()}">Previous</a>
+                            <span th:text="${clients.number + 1}"></span>/<span th:text="${clients.totalPages}"></span>
+                            <a th:href="@{'/web/clients/'(page=${clients.number + 1})}" th:if="${clients.hasNext()}">Next</a>
+                        </div>
+                        </div>
+                        <!-- END USER DATA-->
+
+
+                    </div>
+                    <div th:replace="admin/layout::footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<th:block th:replace="admin/layout::block-script">
+</th:block>
+
+</body>
+
+</html>
+<!-- end document-->

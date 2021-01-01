@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fixed-user/layout::head">
+    <title>Home</title>
+</head>
+
+<body scroll="no">
+<div class="loading-overlay"><img alt="Preloading WealthLand"
+                                  src="https://batdongsan8.trustweb.vn/wp-content/themes/flatsome-child/images/preloader.gif"/>
+</div>
+<header th:replace="fixed-user/layout::header">
+</header>
+<main>
+    <div class="page-header">
+        <h2 class="page-title text-3">Giới thiệu</h2>
+    </div>
+    <article class="app-container blog-detail page-container">
+<!--        <h2 class="title text-3 text-medium">Dự án tiêu biểu</h2>-->
+        <div class="blog-content">
+            <p th:utext="${partner.description}"></p>
+            </div>
+        </div>
+    </article>
+</main>
+<footer th:replace="fixed-user/layout::footer"></footer>
+<script src="assets_user/js/all.js"></script>
+<th:block th:replace="fixed-user/layout::js">
+</th:block>
+</body>
+</html>

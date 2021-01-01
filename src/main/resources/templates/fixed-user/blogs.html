@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fixed-user/layout::head">
+    <title>Home</title>
+</head>
+
+<body scroll="no">
+<div class="loading-overlay"><img alt="Preloading WealthLand"
+                                  src="https://batdongsan8.trustweb.vn/wp-content/themes/flatsome-child/images/preloader.gif"/>
+</div>
+<header th:replace="fixed-user/layout::header">
+</header>
+<main>
+    <div class="page-header">
+        <h2 class="page-title text-3">Tin tức WealthLand</h2>
+    </div>
+    <div class="app-container">
+        <div class="row">
+            <div class="col-md-9" id="news">
+                <th:block th:each="row: ${news}">
+                <section class="blog-list col-12 col-md-9"><a class="blog-list-item" th:href="@{/blogDetails?id=__${row.id}__}">
+                    <figure class="blog-list-item__preview"><img th:src="@{/upload/__${row.image}__}"/>
+                        <div class="date-tag bg-accent"><span class="date" th:text="${row.date}"></span><span class="month" th:text="${row.month}"></span></div>
+                    </figure>
+                    <div class="text-info">
+                        <div class="main-title-wrapper">
+                            <div class="main-title text-medium" th:text="${row.title1}"></div>
+                        </div>
+                        <div class="split-line">
+                            <div></div>
+                        </div>
+                        <div class="short-description text-medium" th:text="${row.checkin}">
+                            <p></p>
+                        </div>
+                    </div></a></section>
+                </th:block>
+            </div>
+            <aside class="function-container col-12 col-md-3">
+                <form class="search-form">
+                    <input type="text" placeholder="Search..."/>
+                    <button class="btn btn-accent"><i class="fa fa-search"></i></button>
+                </form>
+                <div class="blog-group">
+                    <div class="title">BÀI VIẾT MỚI</div>
+                    <ul class="blog-list">
+                        <th:block th:each="row: ${news}">
+                        <li><a th:href="@{/blogDetails?id=__${row.id}__}" th:text="${row.title1}"></a></li>
+                        </th:block>
+                    </ul>
+                </div>
+                <div class="blog-group">
+                    <div class="title">Chuyên mục</div>
+                    <ul class="blog-list">
+                        <li><a href="#">Tin Bất động sản</a></li>
+                    </ul>
+                </div>
+                <div class="blog-group">
+                    <div class="title">Meta</div>
+                    <ul class="blog-list">
+                        <li><a href="/login">Đăng nhập</a></li>
+                        <li><a href="">RSS cho bài viết</a></li>
+                        <li><a href="">Dòng thông tin phản hồi</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
+<footer th:replace="fixed-user/layout::footer"></footer>
+<th:block th:replace="fixed-user/layout::js">
+</th:block>
+</body>
+</html>

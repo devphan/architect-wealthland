@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fixed-user/layout::head">
+    <title>Home</title>
+
+
+</head>
+
+<body scroll="no">
+<div class="loading-overlay"><img alt="Preloading WealthLand"
+                                  src="https://batdongsan8.trustweb.vn/wp-content/themes/flatsome-child/images/preloader.gif"/>
+</div>
+<header th:replace="fixed-user/layout::header">
+</header>
+<main class="index-page">
+    <div class="carousel-container">
+        <div id="wowslider-container1">
+            <div class="ws_images">
+                <ul>
+                    <th:block th:each="row:${banners}">
+                    <li><a href="http://wowslider.net"><img th:src="@{upload/__${row.image}__}" alt=""
+                                                            title=""/></a></li>
+                    </th:block>
+                </ul>
+                <div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.net">slider
+                    jquery</a><span>by WOWSlider.com v9.0m</span></div>
+            </div>
+            <div class="ws_shadow"></div>
+        </div>
+        <div class="carousel-widget app-container" id="modalAddEdit" name="modalAddEdit">
+            <th:block th:each="row2,iter:${banners}" th:if="${iter.index} == 0 " >
+            <div class="project-description">
+                <h2 class="feature text-2" th:text="${row2.title1}"></h2><span class="feature-description" th:text="${row2.title2}"></span><span class="feature-description" th:utext="${row2.description}"></span>
+                <button class="btn btn-accent">Xem chi tiết</button>
+            </div>
+            </th:block>
+            <form id="formAddEdit" th:name="formAddEdit">
+                <input type="text" id="name" placeholder="Vui lòng nhập họ tên" required/>
+                <input type="number" id="tel" placeholder="Số điện thoại" required minlength="10" maxlength="11"/>
+                <input type="email" id="email" placeholder="Email"/>
+                <textarea  id="description" placeholder="Viết bình luận" rows="4" required></textarea>
+                <a href="javascript:" style="text-align: center" class="btn btn-accent" onclick="clients.save()">Đăng ký tư vấn</a>
+            </form>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="libs/wowslider/engine/style.css"/>
+    <script src="libs/wowslider/engine/wowslider.js"></script>
+    <script src="libs/wowslider/engine/script.js"></script>
+    <section class="search-area app-container">
+        <form class="search-form" action="/search" th:object="${estate}" method="get">
+            <input type="hidden">
+            <div class="combox__wrapper">
+                <div class="control__wrapper">
+                    <label>Price</label>
+                    <select class="control" id="price" name="bathroom" th:field="*{price}">
+                        <option value="1">Dưới 1 tỷ</option>
+                        <option value="2">Từ 1 - 3 tỷ</option>
+                        <option value="3">Từ 3 - 5 tỷ</option>
+                        <option value="3">Trên 5 tỷ</option>
+                    </select>
+                </div>
+                <!--            <div class="control__wrapper">-->
+                <!--                <label>Từ khóa</label>-->
+                <!--                <input class="control" type="text" placeholder="Từ khóa tìm kiếm" name="keyword"/>-->
+                <!--            </div>-->
+                <div class="control__wrapper">
+                    <label>Area</label>
+                    <select class="control" id="area" placeholder="Diện tích" th:field="*{area}">
+                        <option value="1">Dưới 50m2</option>
+                        <option value="2">Từ 50 - 500 m2</option>
+                        <option value="3">Từ 500 - 1 km2</option>
+                        <option value="4">Trên 1 km2</option>
+                    </select>
+                </div>
+                <div class="control__wrapper">
+                    <label>Phòng tắm</label>
+                    <select class="control" placeholder="Số phòng tắm" id="bathroom" th:field="*{bathroom}">
+                        <option value="1">Từ 1 - 1.5 phòng</option>
+                        <option value="2">Từ 2 - 3.5 phòng</option>
+                        <option value="3">Trên 3.5 phòng</option>
+                    </select>
+                </div>
+                <div class="control__wrapper">
+                    <label>Phòng ngủ</label>
+                    <select class="control" placeholder="Số phòng tắm" id="bedroom" th:field="*{bedroom}">
+                        <option value="1">Từ 1 - 1.5 phòng</option>
+                        <option value="2">Từ 2 - 3.5 phòng</option>
+                        <option value="3">Trên 3.5 phòng</option>
+                    </select>
+                </div>
+                <div class="control__wrapper">
+                    <button type="submit" class="btn btn-accent">TÌM KIẾM</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <section class="hot-projects app-container">
+        <div class="title-section">
+            <h2 class="text-3">DỰ ÁN NỔI BẬT</h2>
+        </div>
+        <div class="hot-projects-container" id="hotEstates">
+            <!--            <figure class="hot-project" ><img-->
+            <!--                    data-original="storage/app-project-lands/April2020/zY6zDV7e3NtzN5Ni3Vht.jpg"/>-->
+            <!--                <figcaption>-->
+            <!--                    <p class="hot-project__title">Palm Garden Shop Villas</p>-->
+            <!--                    <p class="hot-project__description">Dự án căn hộ Picity High Park Quận 12 tọa lạc ngay trung tâm-->
+            <!--                        hành chính-->
+            <!--                        của Quận, gần Quốc Lộ 1A. Đây là vị trí huyết mạch, rất thuận tiện để di chuyển về Tân Bình, Gò-->
+            <!--                        Vấp, Thủ-->
+            <!--                        Đức và Bình Dương. Xung quanh là hàng loạt các tiện ích chất lượng như Mega Market Hiệp Phú,-->
+            <!--                        bệnh viện-->
+            <!--                        Hạnh Phúc, Vincom…</p><a class="link-project"-->
+            <!--                                                 href="https://wealthland.vn/du-an/palm-garden-shop-villas">XEM CHI TIẾT-->
+            <!--                    >></a>-->
+            <!--                </figcaption>-->
+            <!--            </figure>-->
+
+            <!--            <figure class="hot-project"><img-->
+            <!--                    data-original="storage/app-project-lands/April2020/1xFFalo2cK7lESCAtxgO.jpg"/>-->
+            <!--                <figcaption>-->
+            <!--                    <p class="hot-project__title">Lancaster Luminaire</p>-->
+            <!--                    <p class="hot-project__description">Lộc Phát Residence sở hữu vị trí độc tôn, mặt tiền đường 22-->
+            <!--                        tháng 12-->
+            <!--                        (Thuận An, Bình Dương), cách Quốc lộ 13 chỉ 600m. Từ dự án, cư dân dễ dàng kết nối về trung tâm-->
+            <!--                        các đô thị-->
+            <!--                        một cách nhanh chóng:</p><a class="link-project"-->
+            <!--                                                    href="https://wealthland.vn/du-an/lancaster-luminaire">XEM CHI TIẾT-->
+            <!--                    >></a>-->
+            <!--                </figcaption>-->
+            <!--            </figure>-->
+            <!--            <figure class="hot-project"><img-->
+            <!--                    data-original="storage/app-project-lands/April2020/mRYOo8EWNjC0Ja6T1lRD.jpg"/>-->
+            <!--                <figcaption>-->
+            <!--                    <p class="hot-project__title">Mỹ Khê Angkora Park</p>-->
+            <!--                    <p class="hot-project__description">Viva Park Giang Điền tọa lạc ngay nút giao thông trọng điểm vào-->
+            <!--                        2 thành-->
+            <!--                        phố lớn Hồ Chí Minh, Biên Hòa.</p><a class="link-project"-->
+            <!--                                                             href="https://wealthland.vn/du-an/my-khe-angkora-park">XEM-->
+            <!--                    CHI TIẾT >></a>-->
+            <!--            </figure>-->
+            <!--            </figcaption>-->
+        </div>
+    </section>
+
+    <section class="gallery-room app-container">
+        <div class="title-section">
+            <h2 class="text-3">DỰ ÁN ĐANG TRIỂN KHAI</h2>
+        </div>
+        <div class="small-tab-controls">
+            <ul id="category_estates">
+
+            </ul>
+        </div>
+        <div id="call-data-api" class="row">
+
+
+        </div>
+    </section>
+    </div>
+
+    <section class="overview">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-12 col-md-6">
+                <div class="text__container">
+                    <div class="title-section">
+                        <h2 class="text-3">Khát vọng vươn xa</h2>
+                    </div>
+                    <p class="description">Chúng tôi tin tưởng rằng việc thành lập WEALTH LAND sẽ là tiền đề nền móng
+                        vững chắc
+                        để hình thành khai thác và xây dựng những dự án Bất Động Sản với những thương hiệu mới, công
+                        trình mới và
+                        thành công mới. Xuất phát từ góc nhìn Thành phố Huế là thị trường khởi sắc tiềm năng nhiều triển
+                        vọng,
+                        chúng tôi hy vọng sẽ song hành cùng với sự phát triển của Huế trong tương lai gần và sẽ tiến
+                        xa</p>
+                    <div class="more-description">
+                        <div class="widget">
+                            <div class="title">TẦM NHÌN</div>
+                            <p class="content"><b>2025:</b> Trở thành công ty đầu tư kinh doanh, dịch vụ bất động sản uy
+                                tín và
+                                chuyên nghiệp hàng đầu miền Trung<br/>
+                        </div>
+                        <div class="widget">
+                            <div class="title">SỨ MỆNH</div>
+                            <p class="content">Nâng cao giá trị sống của người Việt cũng như đem lại lợi ích cho xã hội
+                                với những
+                                hành động thiết thực chung tay cho cộng đồng</p>
+                        </div>
+                        <div class="widget">
+                            <div class="title">GIÁ TRỊ CỐT LÕI</div>
+                            <p class="content">Khát vọng - Chuyên nghiệp - Chính trực - Nhân văn</p>
+                        </div>
+                        <div class="widget">
+                            <div class="title">TRIẾT LÝ KINH DOANH</div>
+                            <p class="content">“Chúng tôi xây dựng niềm tin bắt đầu từ xây dựng ngôi nhà của bạn”.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="news-figure-list app-container">
+        <div class="title-section">
+            <h2 class="text-3">Tin tức</h2>
+        </div>
+        <div class="row" id="news">
+
+        </div>
+    </section>
+</main>
+<div id='fb-root'></div>
+<footer th:replace="fixed-user/layout::footer"></footer>
+<th:block th:replace="fixed-user/layout::js">
+</th:block>
+<!-- <script src="/js/contact-form.js"></script>
+<script src="/js/landing-page.js"></script> -->
+
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<div class='fb-customerchat' page_id='237094363414637' theme_color='#44bec7'
+     logged_in_greeting='Xin chào, tôi có thể hổ trợ gì cho bạn không?'
+     logged_out_greeting='Xin chào, tôi có thể hổ trợ gì cho bạn không?'>
+</div>
+<script src="assets_user/js/all.js"></script>
+<script>
+
+
+    estates.initHotProject();
+    estates.drawTable();
+    estates.getData(0);
+    estates.news();
+    banners.show();
+</script>
+
+
+</body>
+
+</html>

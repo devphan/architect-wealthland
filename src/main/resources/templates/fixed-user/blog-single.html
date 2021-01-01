@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fixed-user/layout::head">
+  <title>Home</title>
+</head>
+
+<body scroll="no">
+<div class="loading-overlay"><img alt="Preloading WealthLand"
+                                  src="https://batdongsan8.trustweb.vn/wp-content/themes/flatsome-child/images/preloader.gif"/>
+</div>
+<header th:replace="fixed-user/layout::header">
+</header>
+<main>
+  <div class="page-header">
+    <h2 class="page-title text-3">Tin tức WealthLand</h2>
+  </div>
+  <form action="/blogDetails" method="get">
+  <div class="app-container">
+    <div class="row">
+      <article class="blog-detail col-md-9">
+        <div class="blog-header"><span class="blog-category" th:text="${newss.category_news.name}"></span>
+          <h1 class="blog-title" th:text="${newss.title1}"></h1>
+        </div>
+        <div class="blog-content tin-tuc">
+          <p th:utext="${newss.description}"></p>
+        </div>
+      </article>
+      <aside class="function-container col-12 col-md-3">
+        <form class="search-form">
+          <input type="text" placeholder="Search..."/>
+          <button class="btn btn-accent"><i class="fa fa-search"></i></button>
+        </form>
+        <div class="blog-group">
+          <div class="title">BÀI VIẾT MỚI</div>
+          <ul class="blog-list" id="title">
+          </ul>
+        </div>
+        <div class="blog-group">
+          <div class="title">Chuyên mục</div>
+          <ul class="blog-list">
+            <li><a href="#">Tin Bất động sản</a></li>
+          </ul>
+        </div>
+        <div class="blog-group">
+          <div class="title">Meta</div>
+          <ul class="blog-list">
+            <li><a href="/login">Đăng nhập</a></li>
+            <li><a href="">RSS cho bài viết</a></li>
+            <li><a href="">Dòng thông tin phản hồi</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+    </div>
+  </form>
+</main>
+<footer th:replace="fixed-user/layout::footer"></footer>
+<th:block th:replace="fixed-user/layout::js">
+</th:block>
+<script src="assets_user/js/all.js"></script>
+<script>
+
+  news.titleNews()
+</script>
+</body>
+</html>

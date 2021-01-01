@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fixed-user/layout::head">
+    <title>Detail</title>
+</head>
+
+<body scroll="no">
+<div class="loading-overlay"><img alt="Preloading WealthLand"
+                                  src="https://batdongsan8.trustweb.vn/wp-content/themes/flatsome-child/images/preloader.gif"/>
+</div>
+<header th:replace="fixed-user/layout::header">
+</header>
+<main>
+    <div class="page-header" th:style="|background:url(@{/upload/__${estate.image}__}) no-repeat center center; background-size: cover;|" id="">
+        <h2 class="page-title text-3" th:text="${estate.name}"></h2>
+    </div>
+    <div id="mdb-lightbox-ui"></div>
+        <article class="container intro-details" th:utext="${estate.description}">
+
+        </article>
+    <div class="land-gallery">
+        <h2 class="text-3 mb-4" style="text-transform: uppercase">Hình ảnh</h2>
+
+        <div class="row clear-fix">
+            <div class="col-6 col-sm-6 col-md-4 col-xl-3">
+                <a class="land-gallery-item" th:onclick="|initialGallery(@{/upload/__${estate.image}__} + ,0)|">
+                <figure class="land-gallery-item__wrapper"><img th:data-original="|@{/upload/__${estate.image}__}|" th:src="@{/upload/__${estate.image}__}"></figure>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fixed-user/layout::footer"></footer>
+<th:block th:replace="fixed-user/layout::js">
+    <link rel="stylesheet" href="https://wealthland.vn/libs/photoswipe/photoswipe.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js" integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin="anonymous"></script>
+    <script src="https://wealthland.vn/libs/photoswipe/photoswipe-ui-default.min.js"></script>
+    <script src="https://wealthland.vn/libs/photoswipe/photoswipe.min.js"></script>
+
+</th:block>
+<script src="assets_user/js/all.js"></script>
+<script>
+    function initialGallery(imgUrls, indexActive) {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+
+        // alert(imgUrls)
+        // build items array
+        let items = (imgUrls || []).map(e => ({
+
+            src: '/' + e,
+            w: 600,
+            h: 400
+
+        }));
+
+        // define options (if needed)
+        let options = {
+            // optionName: 'option value'
+            // for example:
+            index: indexActive // start at first slide
+        };
+
+        // Initializes and opens PhotoSwipe
+        const gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+    }
+
+
+</script>
+
+</body>
+</html>

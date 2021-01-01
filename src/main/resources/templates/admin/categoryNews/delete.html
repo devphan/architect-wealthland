@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="admin/layout::head">
+    <title>Project</title>
+</head>
+
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header th:replace="admin/layout::header-mobile"></header>
+    <!-- END HEADER MOBILE-->
+    <aside th:replace="admin/layout::header-slidebar"></aside>
+    <!-- MENU SIDEBAR-->
+
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header th:replace="admin/layout::header-desktop"></header>
+
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Category</strong>
+                                </div>
+                                <div class="card-body card-block">
+                                    <th:block th:switch="${error}">
+                                        <div th:case="success" th:utext="${message}" class="alert alert-success">
+
+                                        </div>
+                                        <div th:case="error" th:utext="${message}" class="alert alert-danger">
+                                        </div>
+
+                                    </th:block>
+                                    <form th:action="@{/web/categoryNews/delete}" method="post" enctype="multipart/form-data" class="form-horizontal" th:object="${categoryNews}">
+                                        <input type="hidden" th:field="*{id}">
+                                        <div class="row form-group">
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Name:</label>
+                                                <label th:text="${categoryNews.name}"></label>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Delete
+                                            </button>
+                                            <a href="/web/categoryNews/" class="btn btn-primary btn-sm">return</a>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div th:replace="admin/layout::footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<th:block th:replace="admin/layout::block-script" >
+</th:block>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
+</body>
+
+</html>
+<!-- end document-->

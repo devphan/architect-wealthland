@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fixed-user/layout::head">
+  <title>Home</title>
+</head>
+
+<body scroll="no">
+<div class="loading-overlay"><img alt="Preloading WealthLand"
+                                  src="https://batdongsan8.trustweb.vn/wp-content/themes/flatsome-child/images/preloader.gif"/>
+</div>
+<header th:replace="fixed-user/layout::header">
+</header>
+<main id="introduction-tabs">
+    <div class="page-header">
+        <h1 class="page-title text-3">Giới Thiệu</h1><span class="page-sub-title"></span>
+    </div>
+
+    <section  class="control-tabs container app-container p-0">
+        <div class="row" style="width: 100%" id="abouts">
+
+        </div>
+    </section>
+     <article class="app-container blog-detail page-container">
+         <div class="blog-content">
+             <p id="call-data-introduct-api"></p>
+         </div>
+
+    </article>
+</main>
+    </main>
+<footer th:replace="fixed-user/layout::footer"></footer>
+<th:block th:replace="fixed-user/layout::js">
+</th:block>
+<script src="assets_user/js/all.js"></script>
+<script>
+    introduces.drawIntroduction();
+</script>
+  </body>
+</html>

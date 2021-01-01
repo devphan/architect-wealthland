@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WealthLand Porfolio</title>
+    <link rel="stylesheet" th:href="@{/assets_user/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/assets_user/css/bootstrap-grid.min.css}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script th:src="@{/assets_user/js/jquery.validate.js}" defer ></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<header th:fragment="header" class="container-fluid">
+    <div class="menu-backdrop"><a onclick="hideMenu()"><i class="fa fa-times"></i></a></div>
+    <nav>
+        <div class="nav-container app-container">
+            <div class="toggle-menu-button-container"><a><i class="fa fa-bars" aria-hidden="true"
+                                                            onclick="showMenu()"></i></a></div>
+            <div class="brand"><a class="logo-website"><img alt="Logo WealthLand" class="logo"
+                                                            data-original="/assets_user/images/Logo.png" /></a></div>
+            <ul class="nav-list">
+                <li class="nav-search">
+                    <form class="search__container">
+                        <input type="text" placeholder="Search..." />
+                        <button class="btn btn-accent"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href="/"> TRANG CHỦ</a></li>
+                <li class="nav-item"><a class="nav-link " href="javascript:;"> GIỚI THIỆU</a>
+                    <ul id="aboutNav">
+                        <li> <a class="nav-link" >Giới thiệu chung</a></li>
+<!--                        <li> <a class="nav-link" href="/about?tab=2">Giới thiệu năng-->
+<!--                            lực</a></li>-->
+<!--                        <li><a class="nav-link" href="/about?tab=3">Định hướng phát-->
+<!--                            triển</a></li>-->
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a class="nav-link " href="javascript:;">DỰ ÁN BĐS</a>
+                    <ul id="estateNav">
+
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link " href="javascript:;"> TIN TỨC</a>
+                    <ul id="newsNav">
+<!--                        <li> <a class="nav-link" href="/blogs">Tin tức-->
+<!--                            WEATHLAND</a></li>-->
+<!--                        <li> <a class="nav-link"-->
+<!--                                href="/blogs">Tin tức-->
+<!--                            thị trường</a></li>-->
+<!--                        <li> <a class="nav-link"-->
+<!--                                href="/blogs">Đầu-->
+<!--                            tư bất động sản</a></li>-->
+<!--                        <li> <a class="nav-link" href="/blogs">Tuyển dụng</a>-->
+<!--                        </li>-->
+<!--                        <li> <a class="nav-link"-->
+<!--                                href="/blogs">Đào-->
+<!--                            tạo bất động sản</a></li>-->
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link " href="javascript:;"> ĐỐI TÁC</a>
+                    <ul id="partnerNav">
+
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link " href="javascript:;"> Thư viện hình ảnh</a>
+                    <ul>
+                        <li> <a class="nav-link" href="/imglib">Ảnh tin tức</a></li>
+                        <li> <a class="nav-link" href="/imglib">Ảnh dự án</a></li>
+                        <li> <a class="nav-link" href="/imglib">Ảnh WEALTH LAND</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link " href="/contacts"> LIÊN HỆ</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<footer th:fragment="footer">
+    <div class="container-fluid contact">
+        <div class="container">
+            <div class="title-section">
+                <h2 class="text-3">liên hệ với chúng tôi</h2>
+            </div>
+            <div class="description">Nếu có bất kỳ câu hỏi thắc mắc nào hay muốn tìm hiểu thêm về chúng tôi. Xin hãy
+                liên hệ
+                với chúng tôi để nhận được câu trả lời chính xác và nhanh nhất!
+            </div>
+            <button class="btn btn-accent"><a href="/contacts">Liên hệ</a></button>
+        </div>
+    </div>
+    <div class="container-fluid copyright">Copyright 2020 @ Babylon Residence</div>
+</footer>
+<th:block th:fragment="js">
+    <script th:src="@{/assets_user/js/jquery.min.js}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.3/photoswipe-ui-default.min.js"
+            integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" th:src="@{/libs/wowslider/engine/wowslider.js}"></script>
+    <script type="text/javascript" th:src="@{/libs/wowslider/engine/script.js}"></script>
+    <script type="text/javascript" th:src="@{/assets_user/js/jquery.lazyload.js}"></script>
+    <script th:src="@{/assets_user/js/all.js}"></script>
+
+    <script src="assets_user/js/all.js"></script>
+<script>
+
+    introduces.partner();
+    introduces.news();
+    introduces.about();
+    introduces.estate();
+</script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:fragment="header">
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+    <base href="/">
+
+    <!-- Title Page-->
+    <title>News</title>
+
+    <!-- Fontfaces CSS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+    <link th:href="@{assets-admin/css/font-face.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/font-awesome-4.7/css/font-awesome.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/font-awesome-5/css/fontawesome-all.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/mdi-font/css/material-design-iconic-font.min.css}" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link th:href="@{assets-admin/vendor/bootstrap-4.1/bootstrap.min.css}" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link th:href="@{assets-admin/vendor/animsition/animsition.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/wow/animate.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/css-hamburgers/hamburgers.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/slick/slick.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/select2/select2.min.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/vendor/perfect-scrollbar/perfect-scrollbar.css}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link th:href="@{assets-admin/css/theme.css}" rel="stylesheet" media="all">
+    <link th:href="@{assets-admin/css/datatable.css}" rel="stylesheet" media="all">
+
+</head>
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header th:replace="admin/layout::header-mobile"></header>
+    <!-- END HEADER MOBILE-->
+    <aside th:replace="admin/layout::header-slidebar"></aside>
+    <!-- MENU SIDEBAR-->
+
+    <!-- END MENU SIDEBAR-->
+
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header th:replace="admin/layout::header-desktop"></header>
+        <!-- HEADER DESKTOP-->
+
+        <!-- MAIN CONTENT-->
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="float-right">
+                                <a th:href="@{/web/news/}" class="au-btn au-btn-icon au-btn--green au-btn--small">List News</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>News</strong>
+                                </div>
+                                <div class="card-body card-block">
+                                    <th:block th:switch="${error}">
+                                        <div th:case="success" th:utext="${message}" class="alert alert-success">
+
+                                        </div>
+                                        <div th:case="error" th:utext="${message}" class="alert alert-danger">
+                                        </div>
+
+                                    </th:block>
+                                    <form method="post" enctype="multipart/form-data" class="form-horizontal" th:action="@{/web/news/}+${action}" th:object="${newss}">
+                                                                                <input type="hidden" th:field="*{id}">
+                                        <div class="row form-group">
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="title" class=" form-control-label">Title</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="title" name="text-input" placeholder="Text" class="form-control" th:field="*{title1}" required>
+                                                <small class="form-text text-muted"></small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="front" class=" form-control-label">frontDescription</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="text" id="front" name="text-input" placeholder="Text" class="form-control" th:field="*{frontDescription}" required>
+                                                <small class="form-text text-muted"></small>
+                                            </div>
+                                        </div>
+                                        <th:block th:if="${action=='edit'}">
+                                            <div class="form-group row ">
+                                                <label class="control-label col-md-3 col-sm-3 ">create At</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <input type="text" th:value="${newss.checkin}" th:field = "*{checkin}"  class="form-control">
+                                                    <input type="text" th:value="${newss.month}" th:field = "*{month}"  class="form-control">
+                                                    <input type="text" th:value="${newss.date}" th:field = "*{date}"  class="form-control">
+                                                </div>
+                                            </div>
+                                        </th:block>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="category" class=" form-control-label">Category</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <select type="text" id="category" name="text-input" placeholder="Text" class="form-control" th:field="*{category_news}">
+                                                </select>
+                                                <small class="form-text text-muted"></small>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label class=" form-control-label">Description</label>
+                                            </div>
+                                            <div class="col-12 col-md-9" >
+                                                <textarea type="text" class="form-control" th:field="*{description}"></textarea>
+                                            </div>
+                                        </div>
+                                        <th:block th:if="${action=='edit'}">
+                                            <div class="form-group row ">
+                                                <label class="control-label col-md-3 col-sm-3 ">Current Image</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <input type="hidden" th:field = "*{image}"  class="form-control">
+                                                    <img th:src="@{/upload/__*{image}__}" class="image" height="120">
+                                                </div>
+                                            </div>
+                                        </th:block>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                                <label for="file-input" class=" form-control-label">Image</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                                <input type="file" id="file-input" name="file-input" class="form-control-file" th:field="*{fileImage}">
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> Submit
+                                            </button>
+                                            <button type="reset" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-ban"></i> Reset
+                                            </button>
+                                            <a href="/web/news/" class="btn btn-primary btn-sm">return</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:replace="admin/layout::footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<th:block th:replace="admin/layout::block-script" >
+</th:block>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
+<script>
+    $('#description').summernote({
+        placeholder: 'Texr here',
+        tabsize: 2,
+        height: 100
+    });
+
+    var news = {} || news;
+    $("#category").change(function () {
+        var category = $('#category').val();
+        $.ajax({
+            url: 'https://wealthland.herokuapp.com/api/categoryNews/' + category,
+            method: 'GET',
+            datatype: 'JSON',
+            success: function (data) {
+                $('#categoryNews').empty();
+                if(category =="Estate") {
+                    $('#projectForm').hide();
+                    $('#estateForm').show();
+                    $('#project').val("")
+                    news.initEstate();
+                }
+                if(category == "Recruitment") {
+                    $('#estateForm').hide();
+                    $('#projectForm').hide();
+                    $('#project').val('');
+                    $('#estate').val('');
+                }
+            }
+        });
+    });
+    news.initEstate = function () {
+        $.ajax({
+            url: "https://wealthland.herokuapp.com/api/estates",
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+                $('#estate').empty();
+                $('#estate').append(`<option value="">--Select Estate--</option>`);
+                $.each(data, function (i, estate) {
+                    $('#estate').append(
+                        `<option value="${estate.id}">${estate.name}</option>`
+                    )
+                })
+            }
+        })
+    }
+    news.initCategory = function () {
+        $.ajax({
+            url: "https://wealthland.herokuapp.com/api/categoryNews",
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+                $('#category').empty();
+                $.each(data, function (i, category) {
+                    $('#category').append(
+                        `<option value="${category.id}">${category.name}</option>`
+                    )
+                })
+            }
+        })
+    }
+    $(document).ready(function () {
+        news.initEstate();
+        news.initCategory()
+    });
+</script>
+</body>
+
+</html>
+<!-- end document-->
